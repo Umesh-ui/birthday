@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shweta — My Sweet Potato 🍠</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FFFBF7;
+    --blush: #F6E4DE;
+    --rose: #C1707C;
+    --rose-deep: #9C4F5E;
+    --plum: #3D2C34;
+    --gold: #C9A24B;
+    --gold-soft: #E8D8AE;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--cream);
+    color: var(--plum);
+    font-family: 'Jost', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1,h2,h3, .display{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .eyebrow{
+    font-family:'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    opacity: 0.8;
+  }
+
+  /* ---------- floating petals ---------- */
+  .petal{
+    position: fixed;
+    top: -5vh;
+    pointer-events: none;
+    opacity: 0.55;
+    z-index: 5;
+    animation: fall linear infinite;
+  }
+  @keyframes fall{
+    to{ transform: translateY(110vh) rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .petal{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position: relative;
+    padding: 2rem 1.5rem;
+    background:
+      radial-gradient(ellipse at top, var(--blush) 0%, var(--cream) 60%);
+  }
+
+  .hero .eyebrow{ margin-bottom: 1.4rem; }
+
+  .hero h1{
+    font-size: clamp(2.6rem, 8vw, 5.4rem);
+    line-height: 1.05;
+    color: var(--rose-deep);
+  }
+
+  .hero .nickname{
+    font-style: italic;
+    color: var(--gold);
+    display:block;
+    font-size: 0.5em;
+    margin-top: 0.3em;
+  }
+
+  .hero p.sub{
+    margin-top: 1.6rem;
+    max-width: 32ch;
+    font-size: 1.05rem;
+    color: var(--plum);
+    opacity: 0.75;
+  }
+
+  .countdown{
+    margin-top: 3rem;
+    display:flex;
+    gap: 1.4rem;
+  }
+  .countdown .box{
+    background: white;
+    border: 1px solid var(--blush);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    min-width: 72px;
+    box-shadow: 0 10px 30px -12px rgba(156,79,94,0.25);
+  }
+  .countdown .num{
+    font-family:'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight:600;
+    color: var(--rose-deep);
+    display:block;
+  }
+  .countdown .lbl{
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  .scroll-cue{
+    margin-top: 3.4rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    opacity: 0.6;
+    animation: bob 2.2s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(8px); }
+  }
+
+  /* ---------- THE ROAD / TIMELINE ---------- */
+  section{
+    padding: 6rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-head{
+    text-align:center;
+    margin-bottom: 4rem;
+  }
+  .section-head h2{
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--rose-deep);
+    margin-top: 0.5rem;
+  }
+
+  .road{
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  .road::before{
+    content:"";
+    position:absolute;
+    left: 10px;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--rose) 0 10px,
+      transparent 10px 20px
+    );
+  }
+
+  .stop{
+    position: relative;
+    margin-bottom: 3rem;
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+  @keyframes reveal{
+    from{ opacity:0; transform: translateX(-16px); }
+    to{ opacity:1; transform: translateX(0); }
+  }
+
+  .stop::before{
+    content:"";
+    position:absolute;
+    left: -2.5rem;
+    top: 4px;
+    width: 14px;
+    height:14px;
+    border-radius:50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 5px var(--blush);
+  }
+
+  .stop .day{
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+    display:block;
+  }
+  .stop h3{
+    font-size: 1.5rem;
+    margin-bottom: 0.35rem;
+    color: var(--plum);
+  }
+  .stop p{
+    font-size: 0.98rem;
+    opacity: 0.75;
+    max-width: 52ch;
+    line-height: 1.6;
+  }
+
+  /* ---------- LETTER ---------- */
+  .letter-wrap{
+    background: white;
+    border-radius: 22px;
+    padding: clamp(2rem, 6vw, 4rem);
+    box-shadow: 0 25px 60px -30px rgba(156,79,94,0.35);
+    border: 1px solid var(--blush);
+    position: relative;
+  }
+  .letter-wrap::before{
+    content: "❝";
+    position: absolute;
+    top: -0.4em;
+    left: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    color: var(--gold-soft);
+  }
+  .letter-wrap p{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.28rem;
+    line-height: 1.85;
+    margin-bottom: 1.3rem;
+    color: var(--plum);
+  }
+  .signoff{
+    margin-top: 2rem;
+    font-style: italic;
+    color: var(--rose-deep);
+    text-align: right;
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.1rem;
+  }
+  .frame{
+    aspect-ratio: 4/5;
+    border-radius: 16px;
+    background: linear-gradient(145deg, var(--blush), var(--gold-soft));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 1rem;
+    font-size: 0.78rem;
+    color: var(--rose-deep);
+    opacity: 0.75;
+    border: 1px dashed var(--rose);
+    overflow: hidden;
+  }
+  .frame img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+
+  /* ---------- FOOTER / GIFT BUTTON ---------- */
+  .finale{
+    text-align:center;
+    padding: 7rem 1.5rem 8rem;
+  }
+  .finale h2{
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    color: var(--rose-deep);
+    margin-bottom: 1.2rem;
+  }
+  .btn{
+    display:inline-block;
+    margin-top: 1.5rem;
+    padding: 0.9rem 2.2rem;
+    border-radius: 999px;
+    background: var(--rose-deep);
+    color: white;
+    text-decoration:none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor:pointer;
+    border: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 14px 30px -12px rgba(156,79,94,0.55);
+  }
+  .btn:hover{ transform: translateY(-3px); }
+
+  #reveal-msg{
+    margin-top: 2rem;
+    font-family:'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  #reveal-msg.show{ opacity: 1; }
+
+  footer{
+    text-align:center;
+    padding: 2rem;
+    font-size: 0.75rem;
+    opacity: 0.45;
+  }
+</style>
+</head>
+<body>
+
+<!-- floating petals, injected by JS -->
+
+<section class="hero">
+  <span class="eyebrow">A little something for</span>
+  <h1>Shweta<span class="nickname">aka Sweet Potato 🍠</span></h1>
+  <p class="sub">Every year, on the 8th of July, the world got a little bit sweeter. Here's to celebrating you.</p>
+
+  <div class="countdown" id="countdown">
+    <div class="box"><span class="num" id="cd-days">00</span><span class="lbl">Days</span></div>
+    <div class="box"><span class="num" id="cd-hours">00</span><span class="lbl">Hours</span></div>
+    <div class="box"><span class="num" id="cd-mins">00</span><span class="lbl">Mins</span></div>
+    <div class="box"><span class="num" id="cd-secs">00</span><span class="lbl">Secs</span></div>
+  </div>
+
+  <div class="scroll-cue">Scroll down, sweet potato ↓</div>
+</section>
+
+<section id="story">
+  <div class="section-head">
+    <span class="eyebrow">Where it began</span>
+    <h2>The Road That Led Here</h2>
+  </div>
+
+  <div class="road">
+    <div class="stop">
+      <span class="day">Day 1–15</span>
+      <h3>The staring</h3>
+      <p>Two strangers, the same stretch of road, the same time every morning. Neither of us said a word — we just kept looking. Fifteen days of pretending not to notice each other, while noticing everything.</p>
+    </div>
+    <div class="stop">
+      <span class="day">The turning point</span>
+      <h3>A wave, and a smile</h3>
+      <p>Then one day, out of nowhere, a hand went up. And you smiled back. That one wave undid two weeks of silence.</p>
+    </div>
+    <div class="stop">
+      <span class="day">Soon after</span>
+      <h3>Instagram IDs, and then, everything</h3>
+      <p>An Instagram handle exchanged on the road turned into messages, into calls, into conversations that didn't want to end.</p>
+    </div>
+    <div class="stop">
+      <span class="day">And then</span>
+      <h3>Meetings, roaming, and us</h3>
+      <p>Meeting up. Roaming around with no real destination, just an excuse to be near each other. Somewhere in all that aimless wandering, we stopped being strangers and started being <em>us</em>.</p>
+    </div>
+    <div class="stop">
+      <span class="day">The real part</span>
+      <h3>Fights, misunderstandings, and staying anyway</h3>
+      <p>It wasn't always easy. There were fights, there were misunderstandings, there were days we didn't get each other at all. But we stayed. We chose each other, again and again.</p>
+    </div>
+    <div class="stop">
+      <span class="day">Today</span>
+      <h3>A lot of love</h3>
+      <p>And after all of it — the staring, the wave, the roaming, the fights — what's left standing is just a lot of love. That's the whole story, really.</p>
+    </div>
+  </div>
+</section>
+
+<section id="letter">
+  <div class="section-head">
+    <span class="eyebrow">For you</span>
+    <h2>A Letter To My Sweet Potato</h2>
+  </div>
+
+  <div class="letter-wrap">
+    <p>My Shweta,</p>
+    <p>I still think about those fifteen days on the road — how neither of us had the courage to say anything, how we just kept stealing glances and pretending we weren't. I didn't know it then, but that was the beginning of the best thing in my life.</p>
+    <p>You waved, you smiled, and somehow that small moment changed everything after it. The messages, the calls, the roaming around with no plan — I wasn't falling for a destination, I was falling for you.</p>
+    <p>We've had our fights. We've misunderstood each other more times than I can count. But every single time, what brought us back was never doubt — it was love, quietly waiting for us to stop being stubborn.</p>
+    <p>Today is your day, sweet potato. I hope it reminds you how loved you are — not just today, but on the ordinary days too. The staring-on-the-road days, the fighting days, the roaming days, all of it.</p>
+    <p>Happy birthday. Here's to more roads, more waves, and a lot more love.</p>
+    <p class="signoff">— always yours</p>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-head">
+    <span class="eyebrow">Us, in pictures</span>
+    <h2>A Few Favourite Moments</h2>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="frame" data-slot="1">Photo 1<br><span style="opacity:.7">replace src in code</span></div>
+    <div class="frame" data-slot="2">Photo 2</div>
+    <div class="frame" data-slot="3">Photo 3</div>
+    <div class="frame" data-slot="4">Photo 4</div>
+    <div class="frame" data-slot="5">Photo 5</div>
+    <div class="frame" data-slot="6">Photo 6</div>
+  </div>
+</section>
+
+<section class="finale">
+  <span class="eyebrow">One more thing</span>
+  <h2>Happy Birthday, Sweet Potato 🍠</h2>
+  <p style="opacity:.7; max-width:44ch; margin:0 auto;">Click below for the softest, most unfiltered truth I've got.</p>
+  <button class="btn" id="gift-btn">Open your gift</button>
+  <div id="reveal-msg">You are, and will always be, the best part of my everyday. I love you. 🤎</div>
+</section>
+
+<footer>made with a lot of love, for the 8th of July</footer>
+
+<script>
+  // ----- countdown to July 8 -----
+  function nextJuly8(){
+    const now = new Date();
+    let year = now.getFullYear();
+    let target = new Date(year, 6, 8, 0, 0, 0); // month is 0-indexed, 6 = July
+    if (target < now){ target = new Date(year + 1, 6, 8, 0, 0, 0); }
+    return target;
+  }
+
+  function updateCountdown(){
+    const target = nextJuly8();
+    const now = new Date();
+    let diff = target - now;
+
+    if (diff <= 0){
+      document.getElementById('countdown').innerHTML = '<div class="box" style="min-width:auto; padding:1rem 2rem;"><span class="num">🎉</span><span class="lbl">It\\'s her day!</span></div>';
+      return;
+    }
+
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff / (1000*60*60)) % 24);
+    const m = Math.floor((diff / (1000*60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ----- gift reveal -----
+  document.getElementById('gift-btn').addEventListener('click', function(){
+    document.getElementById('reveal-msg').classList.add('show');
+    burstHearts();
+  });
+
+  // ----- floating petals -----
+  const petalEmojis = ['🌸','🤎','🌷'];
+  function spawnPetal(){
+    const el = document.createElement('div');
+    el.className = 'petal';
+    el.textContent = petalEmojis[Math.floor(Math.random()*petalEmojis.length)];
+    el.style.left = Math.random()*100 + 'vw';
+    el.style.fontSize = (0.8 + Math.random()*1.2) + 'rem';
+    const duration = 8 + Math.random()*6;
+    el.style.animationDuration = duration + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), duration*1000);
+  }
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setInterval(spawnPetal, 900);
+  }
+
+  // ----- heart burst on gift open -----
+  function burstHearts(){
+    for(let i=0;i<18;i++){
+      setTimeout(() => {
+        const el = document.createElement('div');
+        el.className = 'petal';
+        el.textContent = '💗';
+        el.style.left = Math.random()*100 + 'vw';
+        el.style.top = '40vh';
+        el.style.fontSize = (1 + Math.random()*1.4) + 'rem';
+        el.style.animationDuration = (2.5 + Math.random()*2) + 's';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 5000);
+      }, i*60);
+    }
+  }
+</script>
+
+</body>
+</html>
